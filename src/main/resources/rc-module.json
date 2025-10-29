@@ -1,5 +1,5 @@
 {
-  "main": "fr.democraft.rcm.helloworld.HelloWorld$Builder",
+  "main": "fr.democraft.rcs.pterodactyl.PterodactylServerProvider$Builder",
   "name": "HelloWorld",
   "description": "Simple HelloWorld module. Usless, unless you are a developer!",
   "environments": [

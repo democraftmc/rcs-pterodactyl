@@ -1,0 +1,8 @@
+{
+  "main": "fr.democraft.rcm.helloworld.HelloWorld$Builder",
+  "name": "HelloWorld",
+  "description": "Simple HelloWorld module. Usless, unless you are a developer!",
+  "environments": [
+    "proxy"
+  ]
+}

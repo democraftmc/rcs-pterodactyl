@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.gradleup.shadow:shadow-gradle-plugin:9.0.0-beta4'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'com.gradleup.shadow'
+
+group = 'fr.democraft'
+version = module_version
+
+repositories {
+    mavenCentral()
+    maven { url = "https://maven.mrnavastar.me/snapshots/" }
+    maven { url = "https://maven.mrnavastar.me/releases/" }
+}
+
+dependencies {
+    compileOnly 'group.aelysium.rustyconnector:core:0.9.1'
+    compileOnly 'net.kyori:adventure-api:4.17.0'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    withJavadocJar()
+    withSourcesJar()
+}
+
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
+
+shadowJar {
+    archiveBaseName.set(archives_base_name)
+    archiveClassifier.set('')
+    mergeServiceFiles()
+    relocate 'org.reflections', 'group.aelysium.rustyconnector.shaded.org.reflections'
+}
+
+tasks.named('jar').configure {
+    enabled = false
+}
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xdoclint:none']
+}
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+jar.finalizedBy(shadowJar)

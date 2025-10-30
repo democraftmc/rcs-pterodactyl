@@ -10,9 +10,9 @@ import org.jetbrains.annotations.Nullable;
 
 
 public class PterodactylServerProvider implements Module {
-    static final String PANEL_API_URL = "https://your-panel.example.com"; // Replace with actual URL
-    static final String API_KEY = "your-api-key"; // Replace with actual API key
-    static final String ID = "pterodactyl";
+    static String PANEL_URL;
+    static String API_KEY;
+    public static final String ID = "pterodactyl";
 
     @Override
     public void close() throws Exception {
@@ -25,6 +25,15 @@ public class PterodactylServerProvider implements Module {
 
     public static class Builder extends ExternalModuleBuilder<PterodactylServerProvider> {
         public void bind(@NotNull ProxyKernel kernel, @NotNull PterodactylServerProvider instance) {
+            MainConfig config = MainConfig.New();
+            PANEL_URL = System.getenv("PTERODACTYL_PANEL_URL");
+            if (PANEL_URL == null || PANEL_URL.isEmpty()) {
+                PANEL_URL = config.PANEL_URL;
+            }
+            API_KEY = System.getenv("PTERODACTYL_API_KEY");
+            if (API_KEY == null || API_KEY.isEmpty()) {
+                API_KEY = config.API_KEY;
+            }
             System.out.println("Pterodactyl Smart Provider is registered!");
             kernel.<EventManager>fetchModule("EventManager").onStart(m -> {
                 m.listen(ServerCreator.class);

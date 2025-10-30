@@ -24,7 +24,8 @@ repositories {
 dependencies {
     compileOnly 'group.aelysium.rustyconnector:core:0.9.1'
     compileOnly 'net.kyori:adventure-api:4.17.0'
-    //compileOnly 'fr.democraft.rcm:smart:0.1.1'
+    implementation 'com.google.code.gson:gson:2.13.2'
+    //compileOnly 'fr.democraft.rcm:smart:0.1.0'
     compileOnly files('/home/funasitien/Bureau/DEMOCRAFT/rcm-smart/build/libs/smart-0.1.0.jar')
 }
 

@@ -1,6 +1,7 @@
-package fr.democraft.rcs.pterodactyl;
+package fr.democraft.rcs.pterodactyl.configs;
 
 import group.aelysium.rustyconnector.shaded.group.aelysium.declarative_yaml.DeclarativeYAML;
+import group.aelysium.rustyconnector.shaded.group.aelysium.declarative_yaml.annotations.Comment;
 import group.aelysium.rustyconnector.shaded.group.aelysium.declarative_yaml.annotations.Config;
 import group.aelysium.rustyconnector.shaded.group.aelysium.declarative_yaml.annotations.Namespace;
 import group.aelysium.rustyconnector.shaded.group.aelysium.declarative_yaml.annotations.Node;
@@ -8,11 +9,15 @@ import group.aelysium.rustyconnector.shaded.group.aelysium.declarative_yaml.anno
 @Namespace("rustyconnector-modules")
 @Config("/smart/pterodactyl.yml")
 public class MainConfig {
-    @Node(value = 1, key = "PANEL_URL")
+    @Node(value = 0, key = "PANEL_URL")
     public String PANEL_URL = "https://panel.examle.com";
 
-    @Node(value = 2, key = "API_KEY")
+    @Node(value = 1, key = "API_KEY")
     public String API_KEY = "your_api_key";
+
+    @Node(value=2, key="ID")
+    @Comment("Can be UUID, NANOID, or FAMILYUUID")
+    public String ID_PREFIX = "NANOID";
 
     @Node(value = 3, key = "DEFAULT_MEMORY")
     public static final int DEFAULT_MEMORY = 1024;

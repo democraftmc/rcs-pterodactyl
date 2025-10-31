@@ -1,5 +1,6 @@
 package fr.democraft.rcs.pterodactyl;
 
+import fr.democraft.rcs.pterodactyl.configs.MainConfig;
 import group.aelysium.rustyconnector.common.events.EventManager;
 import group.aelysium.rustyconnector.common.modules.ExternalModuleBuilder;
 import group.aelysium.rustyconnector.common.modules.Module;
@@ -10,8 +11,9 @@ import org.jetbrains.annotations.Nullable;
 
 
 public class PterodactylServerProvider implements Module {
-    static String PANEL_URL;
-    static String API_KEY;
+    public static String PANEL_URL;
+    public static String API_KEY;
+    public static MainConfig config;
     public static final String ID = "pterodactyl";
 
     @Override
@@ -36,7 +38,7 @@ public class PterodactylServerProvider implements Module {
             }
             System.out.println("Pterodactyl Smart Provider is registered!");
             kernel.<EventManager>fetchModule("EventManager").onStart(m -> {
-                m.listen(ServerCreator.class);
+                m.listen(Events.class);
             });
         }
         

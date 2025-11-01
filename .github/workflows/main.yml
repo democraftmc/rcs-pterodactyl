@@ -2,7 +2,7 @@ name: Publish
 
 on:
   push:
-    branches: [ main ] # ou une autre branche que vous souhaitez surveiller
+    branches: [ main ]
 
 jobs:
   publish:
@@ -31,7 +31,7 @@ jobs:
       - name: Install Gradle
         uses: gradle/actions/setup-gradle@v5
         with:
-          gradle-version: current # Remplacez par la version de Gradle que vous utilisez
+          gradle-version: current
 
       - name: Build with Gradle
         run: gradle build
@@ -43,12 +43,20 @@ jobs:
           project: h0Ef1dOf
           name: alpha-${{ steps.vars.outputs.SHORT_SHA }}
           version: alpha-${{ steps.vars.outputs.SHORT_SHA }}
-          changelog: "Automatic build from commit ${{ steps.vars.outputs.SHORT_SHA }}"
+          changelog: |
+            ## ${{ github.event.head_commit.message }} 
+            👤 Change pushed by ${{ github.event.head_commit.author.name }}
+            **🔗 URL:** [View Commit](${{ github.event.head_commit.url }})
+            *🤖 Automatic release from commit* `${{ github.sha }}`
           loaders: |-
             velocity
           dependencies: |-
             [{
               "project_id": "Hd02Faj9",
+              "dependency_type": "required"
+            },
+            {
+              "project_id": "b227Xhmj",
               "dependency_type": "required"
             }]
           game-versions: |-

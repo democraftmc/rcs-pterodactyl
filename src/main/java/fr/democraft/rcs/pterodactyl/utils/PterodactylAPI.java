@@ -2,19 +2,13 @@ package fr.democraft.rcs.pterodactyl.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import fr.democraft.rcs.pterodactyl.PterodactylServerProvider;
-import fr.democraft.rcs.pterodactyl.configs.MainConfig;
-import group.aelysium.rustyconnector.proxy.family.Family;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
 
 import static fr.democraft.rcs.pterodactyl.PterodactylServerProvider.PANEL_URL;
 import static fr.democraft.rcs.pterodactyl.PterodactylServerProvider.API_KEY;

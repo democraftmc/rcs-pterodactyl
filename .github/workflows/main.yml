@@ -62,4 +62,4 @@ jobs:
           game-versions: |-
             1.20.x
             1.21.x
-          files: build/libs/smart-alpha-${{ steps.vars.outputs.SHORT_SHA }}.jar
+          files: build/libs/rcs-pterodactyl-alpha-${{ steps.vars.outputs.SHORT_SHA }}.jar

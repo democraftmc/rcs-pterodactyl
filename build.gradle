@@ -18,15 +18,18 @@ repositories {
     mavenCentral()
     maven { url = "https://maven.mrnavastar.me/snapshots/" }
     maven { url = "https://maven.mrnavastar.me/releases/" }
-    maven { url = "https://java.funa.dev/releases"}
+    maven { url = "https://java.funa.dev/releases" }
+    maven { url = "https://repo.papermc.io/repository/maven-public/" }
 }
 
 dependencies {
-    compileOnly 'group.aelysium.rustyconnector:core:0.9.1'
-    compileOnly 'net.kyori:adventure-api:4.17.0'
-    implementation 'com.google.code.gson:gson:2.13.2'
-    compileOnly 'fr.democraft.rcm.smart:rcm-smart:0.1.0'
-    //compileOnly files('/home/funasitien/Bureau/DEMOCRAFT/rcm-smart/build/libs/smart-0.1.0.jar')
+    compileOnly     'group.aelysium.rustyconnector:core:0.9.1'
+    compileOnly     'net.kyori:adventure-api:4.17.0'
+    implementation  'com.google.code.gson:gson:2.13.2'
+    compileOnly     'fr.democraft.rcm.smart:rcm-smart:0.1.0'
+
+    compileOnly     'com.velocitypowered:velocity-api:3.4.0-SNAPSHOT'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.4.0-SNAPSHOT'
 }
 
 java {

@@ -63,6 +63,10 @@ jobs:
               "dependency_type": "required"
             }]
           game-versions: |-
+            1.16.x
+            1.17.x
+            1.18.x
+            1.19.x
             1.20.x
             1.21.x
           files: build/libs/rcs-pterodactyl-alpha-${{ steps.vars.outputs.SHORT_SHA }}.jar
